@@ -1,72 +1,61 @@
-
 <!DOCTYPE html><html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Velvet Room</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family: Georgia, 'Times New Roman', serif;
-  background:black;
-  color:#eae6ff;
-  height:100vh;
-  overflow:hidden;
-}.bg{ position:fixed; inset:0; background:url('velvet-room.jpg') center/cover no-repeat; filter:brightness(0.45) contrast(1.1); z-index:-2; }
-
-.overlay{ position:fixed; inset:0; background:radial-gradient(circle at center, rgba(40,40,90,0.3), rgba(0,0,0,0.85)); z-index:-1; }
-
-.container{ height:100vh; display:flex; align-items:center; justify-content:center; }
-
-.card{ background:rgba(10,10,20,0.75); border:1px solid rgba(120,120,255,0.25); padding:30px; max-width:700px; text-align:center; box-shadow:0 0 40px rgba(80,80,200,0.2); }
-
-h1{ font-size:2.5em; letter-spacing:2px; margin-bottom:20px; }
-
-p{ line-height:1.7; font-size:1.05em; opacity:0.9; }
-
-.igor{ margin-top:25px; font-style:italic; color:#b7b0ff; }
-
-button{ margin-top:25px; padding:10px 22px; background:transparent; border:1px solid #6b6bff; color:#cfcfff; cursor:pointer; transition:0.3s; }
-
-button:hover{ background:#6b6bff; color:black; }
-
-.glitch{ animation:glitch 0.8s infinite; }
-
-@keyframes glitch{ 0%{transform:translate(0)} 20%{transform:translate(-1px,1px)} 40%{transform:translate(1px,-1px)} 60%{transform:translate(-1px,-1px)} 80%{transform:translate(1px,1px)} 100%{transform:translate(0)} } </style>
-
-</head>
-<body><div class="bg"></div>
-<div class="overlay"></div><div class="container">
-  <div class="card">
-    <h1 class="glitch">VELVET ROOM</h1>
-    <p>
-      Este é um lugar entre sonho e realidade, mente e matéria.
-      Aqui, o destino daqueles que caminham pelo <strong>Limiar</strong>
-      é observado, registrado e testado.
-    </p><p class="igor">
-  “Bem-vindo. Seu contrato já foi assinado no momento em que você
-  temeu ser esquecido.”
-  <br>— Igor
-</p>
-
-<button onclick="next()">Ouvir mais</button>
-
-  </div>
-</div><script>
-let stage = 0;
-const texts = [
-  "Suas Personae são ecos de quem você é — e de quem você teme se tornar.",
-  "Quanto mais você nega a si mesmo, mais alto esses ecos gritam.",
-  "No final, apenas uma pergunta importa: quem você escolhe lembrar?"
-];
-
-function next(){
-  const p = document.querySelector('p');
-  if(stage < texts.length){
-    p.innerHTML = texts[stage];
-    stage++;
-  }else{
-    p.innerHTML = "A porta se fecha. A sessão chegou ao fim.";
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contagem Regressiva</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }body {
+  height: 100vh;
+  width: 100vw;
+  background-image: url(2026_01_10_15_50_17.gif);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
 }
-</script></body>
+
+.countdown {
+  margin-top: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(0,0,0,0.8);
+}
+
+  </style>
+</head>
+<body>
+  <div class="countdown" id="countdown">Começa em: --:--:--</div>  <script>
+    function atualizarContagem() {
+      const agora = new Date();
+
+      const amanha = new Date();
+      amanha.setDate(agora.getDate() + 1);
+      amanha.setHours(13, 0, 0, 0);
+
+      const diferenca = amanha - agora;
+
+      if (diferenca <= 0) {
+        document.getElementById('countdown').textContent = 'Começou';
+        return;
+      }
+
+      const horas = Math.floor(diferenca / (1000 * 60 * 60));
+      const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+      document.getElementById('countdown').textContent =
+        `Começa em: ${String(horas).padStart(2, '0')}:${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
+    }
+
+    atualizarContagem();
+    setInterval(atualizarContagem, 1000);
+  </script></body>
 </html>
