@@ -1,61 +1,167 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contagem Regressiva</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }body {
-  height: 100vh;
-  width: 100vw;
-  background-image: url(2026_01_10_15_50_17.gif);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
+<meta charset="UTF-8">
+<title>ORDEM // REGISTRO DE MISSÃO</title>
+
+<style>
+body {
+    background-color: #0a0a0a;
+    color: #d6d6d6;
+    font-family: "Courier New", monospace;
+    margin: 0;
+    padding: 0;
 }
 
-.countdown {
-  margin-top: 20px;
-  font-size: 2rem;
-  font-weight: bold;
-  text-shadow: 0 0 10px rgba(0,0,0,0.8);
+.container {
+    padding: 40px;
 }
 
-  </style>
+h1 {
+    color: #b30000;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+}
+
+h2 {
+    color: #888;
+}
+
+.box {
+    background: rgba(20,20,20,0.9);
+    border: 1px solid #222;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.red {
+    color: #b30000;
+}
+
+.warning {
+    color: #ff4d4d;
+}
+
+.glitch {
+    animation: glitch 1.2s infinite;
+}
+
+@keyframes glitch {
+    0% {opacity:1;}
+    50% {opacity:0.6;}
+    100% {opacity:1;}
+}
+
+.hidden {
+    display: none;
+}
+
+button {
+    background: black;
+    color: #b30000;
+    border: 1px solid #b30000;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #b30000;
+    color: black;
+}
+</style>
 </head>
+
 <body>
-  <div class="countdown" id="countdown">Começa em: --:--:--</div>  <script>
-    function atualizarContagem() {
-      const agora = new Date();
 
-      const amanha = new Date();
-      amanha.setDate(agora.getDate() + 1);
-      amanha.setHours(13, 0, 0, 0);
+<div class="container">
 
-      const diferenca = amanha - agora;
+<h1>ORDO CALAMITAS // REGISTRO DE MISSÃO</h1>
 
-      if (diferenca <= 0) {
-        document.getElementById('countdown').textContent = 'Começou';
-        return;
-      }
+<div class="box">
+<h2>STATUS:</h2>
+<p class="warning">ATIVO</p>
 
-      const horas = Math.floor(diferenca / (1000 * 60 * 60));
-      const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
-      const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+<h2>LOCAL:</h2>
+<p>Santa Dália</p>
 
-      document.getElementById('countdown').textContent =
-        `Começa em: ${String(horas).padStart(2, '0')}:${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
-    }
+<h2>CLASSIFICAÇÃO:</h2>
+<p class="red">SIGILOSO - NÍVEL 3</p>
+</div>
 
-    atualizarContagem();
-    setInterval(atualizarContagem, 1000);
-  </script></body>
+<div class="box">
+<h2>RESUMO</h2>
+<p>
+Relatórios indicam uma sequência de desaparecimentos e anomalias biológicas na região de Santa Dália.
+Testemunhas descrevem odores intensos, distorções ambientais e sensação constante de observação.
+</p>
+
+<p>
+Análises preliminares sugerem ligação com evento registrado anteriormente (ARQUIVO: HOTEL MORO).
+</p>
+</div>
+
+<div class="box">
+<h2>OBJETIVO</h2>
+<ul>
+<li>Investigar a origem das anomalias</li>
+  
+<li>Identificar presença paranormal ativa</li>
+  
+<li>Confirmar ou descartar envolvimento da entidade designada: <span class="red">GÊNESIS</span></li>
+  
+<li>Coletar dados sobre possível atividade da organização desconhecida (FDÉ)</li>
+</ul>
+</div>
+
+<div class="box">
+<h2>DIRETRIZES</h2>
+<ul>
+<li>Evitar exposição prolongada ao ambiente contaminado</li>
+<li>Não entrar em estruturas orgânicas instáveis</li>
+<li>Registrar qualquer alteração física ou psicológica</li>
+<li class="warning">Contato com a entidade NÃO é recomendado</li>
+</ul>
+</div>
+
+<div class="box">
+<h2>OBSERVAÇÕES</h2>
+<p class="glitch">
+O padrão de eventos indica movimento, não fixação.
+</p>
+
+<p>
+A entidade não está caçando de forma aleatória.
+</p>
+
+<p class="red">
+Ela está indo para algum lugar.
+</p>
+</div>
+
+<div class="box">
+<h2>ARQUIVO EXTRA</h2>
+<button onclick="mostrar()">ACESSAR</button>
+
+<div id="extra" class="hidden">
+<p class="warning">
+...registro incompleto recuperado...
+</p>
+
+<p>
+"ele não parou ele não morreu ele não ficou ele levou algo daqui
+ele deixou algo também não é mais só carne agora pensa agora observa
+não sigam rastros sigam o caminho ele está abrindo ele quer que encontrem"
+</p>
+</div>
+</div>
+
+</div>
+
+<script>
+function mostrar(){
+    document.getElementById("extra").style.display = "block";
+}
+</script>
+
+</body>
 </html>
